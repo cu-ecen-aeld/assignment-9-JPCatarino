@@ -5,7 +5,7 @@
 #
 ##############################################################
 
-AESD_ASSIGNMENTS_VERSION = '26ccbf0f22d237f71c1dd5720ab8e72df5057b1b'
+AESD_ASSIGNMENTS_VERSION = 'db587b53a60170a33536ca47f87a335aafe151aa'
 # Note: Be sure to reference the *ssh* repository URL here (not https) to work properly
 # with ssh keys and the automated build/test system.
 # Your site should start with git@github.com:
@@ -17,6 +17,10 @@ define AESD_ASSIGNMENTS_BUILD_CMDS
 	$(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D)/finder-app all
 	$(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D)/server all
 endef
+
+AESD_ASSIGNMENTS_MODULE_SUBDIRS = aesd-char-driver
+
+$(eval $(kernel-module))
 
 define AESD_ASSIGNMENTS_INSTALL_TARGET_CMDS
 	$(INSTALL) -d 0755 $(@D)/conf/ $(TARGET_DIR)/etc/finder-app/conf/
